@@ -1,0 +1,42 @@
+<head>
+<style>
+.vario {
+  width:55px;
+  height:260px;
+  z-index:11;
+}
+
+svg.vario {
+  fill: #808080;
+  stroke: white;
+  stroke-width: 0px;
+  background-color: #404040;
+}
+
+line.vario-zero {
+  fill: #DDAAFF;
+  stroke: white;
+  stroke-width: 1px;
+}
+line.vario-needle {
+  fill: #DDAAFF;
+  stroke: white;
+  stroke-width: 3px;
+  opacity: 0.75;
+}
+
+</style>
+</head>
+
+
+
+<template name="vario">
+  <div class="vario"
+      style="position:absolute; left:{{left}}; top:{{top}}; background-color:#202020">
+    <svg class='vario'>
+      <path d="M10,0 l0,260 l18,0 l25,-75 l0,-110 l-25,-75 l-18,0 " />
+      <line x1="10" y1="130" x2="50" y2="130" class="vario-zero" />
+      <line x1="28" y1="{{y_needle}}" x2="170" y2="130" class="vario-needle" />
+    </svg>
+  </div>
+</template>

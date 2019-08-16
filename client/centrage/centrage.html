@@ -1,0 +1,221 @@
+
+
+
+<head>
+  <style>
+  .centrage-panel {
+    background-color:black;
+    color:white;
+    font-family: monospace;
+    min-height:900px;
+    padding-left:10px;
+  }
+
+  svg.centrage {
+    __margin-left:30px;
+    __margin-top:30px;
+    width:700px; height:700px;
+    font-family: 'Droid Sans Mono';
+    __font-weight: 600;
+    font-size:23px;
+    __letter-spacing: 2px;
+    fill : #DDFFAA;
+    opacity: 0.8;
+    stroke-size: 3px; stroke: #DDFFAA;
+    text-anchor:end;
+  }
+
+
+  </style>
+</head>
+
+<template name="centrage">
+  <div class="centrage-panel">
+    <div>
+    airplane data: total length: 64m, CoL: 32m, CoG: 32m (initial).<br>
+    weight: 138-300 T(kgf)  Fuel max: 171,000 liters<br>
+    Max Thrust (x2) 400kN =~ 45,000 kgf (1N = 9.81kgf) Total Thrust: 90,000 kgf<br>
+    if (coG@32 and coL@33 and W=Lw=200T) then Lt = 6.4T
+    <br>
+    <br>ToDO: compute sum moments Wing+Tail without speed. => infere stability.
+    <br> a lot of cleaning.
+  </div>
+
+  <div style="z-index:10;position:relative; top:-150px;">
+    <div style="position:absolute; left:600px; top:100px; margin:0; padding:0;">
+    {{> vbar_apc name="weight" label="W"}}
+    </div>
+
+    <div style="position:absolute; left:670px; top:100px; margin:0; padding:0;">
+    {{> vbar name="coG-ratio" label="coG" zero="0" max="100"}}
+    </div>
+
+<!-- to build another widget with Min-Max TODO
+    <div style="position:absolute; left:740px; top:100px; margin:0; padding:0;">
+    {{> vbar_apc name="coLw" label="coLw"}}
+    </div>
+-->
+
+    <div style="position:absolute; left:820px; top:100px; margin:0; padding:0;">
+    {{> vbar_apc name="aoa_body" label="aoa-w" xa_min="-50" xa_max="+50"}}
+    </div>
+
+<!--
+    <div style="position:absolute; left:960px; top:100px; margin:0; padding:0;">
+    {{> vbar name="aoa_yaw" label="aoa-y" zero="100"}}
+    </div>
+    <div style="position:absolute; left:1030px; top:100px; margin:0; padding:0;">
+    {{> vbar name="FF" label="FF" zero="0"}}
+    </div>
+  -->
+
+  </div>
+
+  <div style="position:absolute; top:400px; left:900px; color:white; font-family:monospace;">
+    <br>engine1  N1:{{N1}}
+    <br>IAS(kts):{{IAS_kts}} ({{a1.TAS}}:{{a1.dda103.k}}) v2:{{a1.v2}}
+    <br>
+    <br>Stabilizer
+    <br>aoa-tail:{{aoa_tail}}  deg:{{_aoa_tail_deg}}
+    <br>CL:{{cl_tail}} CD:{{cd_tail}}
+    <br>Lift coLt:{{coLt}} [{{coLt_ratio}}:300]
+    <br>Drag:% {{Dt_kgf}}
+    <br>
+    <br>Elevator
+    <br>aoa:{{aoa_elevator_neg}} deg:{{aoa_elevator_deg_neg}}
+    <br>CL:{{cl_elevator}} CD:{{cd_tail}}
+    <br>Lift {{Le_kgf}} coLe:{{coLe}}
+    <br>Drag:
+    <br>
+    <br>Wing
+    <br>aoa:{{a1.aoa.angle}} deg:{{_aoa_body_deg}} CL:{{cl_wing}}
+    <br>Lift:{{_Lw}}kgfx1000 [{{Lw}}:300]
+    <br>coLw:{{coLw}} [{{coLw_ratio}}:300]
+    <br>Drag:{{Dw}}
+    <br>
+    <br>coG-ratio:%{{coG_ratio}}  coG:{{coG}}
+    <br>Weight:{{weight}}
+    <br>r/c [{{rc}}:300] ft/min:{{rc_ftm}}
+    <br>
+    <br>T:{{etime}}:{{ticks}}:{{overheat}}
+  </div>
+
+
+
+
+    <svg class="centrage"
+      style="transform-origin:300px 500px; margin-top:100px; width:1000px; height:700px;">
+      <text x="10" y="30" style="text-anchor:start;">Centrage</text>
+
+<!--
+      <path d="M100,350 m0,-100 l640,100" __class="flight-path" style="stroke:lightblue; stroke-width:2;"/>
+      <path d="M100,350 m0,-50 l640,50" __class="aoa" style="stroke:white; stroke-width:2;"/>
+-->
+
+
+    <!-- coG position -->
+    <path
+      transform="translate(100,350)"
+      d="M{{_coG}},0 l0,100" style="stroke:blue; stroke-width:3;"
+    />
+
+
+      <!-- assiette avion Gravity and coLw -->
+
+      <g transform="translate(100,350) rotate({{_aoa_body_deg}},{{_coG}},0)">
+
+        <!--
+      <path __class=""
+      d="M0,0 l640,0 l0-20 M100,350 m{{_coLw}},-300 l0,600" style="fill:none;"/>
+-->
+
+      <!--
+      <path d="M{{coLw}},0 l{{Dw}},-{{Lw}}"
+          style="stroke:lightgreen; stroke-width:2;"
+      />
+-->
+
+      <!--
+            Wing Lift : center of Wing Aerodynamic.
+            coLw = (TeMAC + 0.5 (LeMAC - TeMAC)
+            coLw = 0.5 (TeMAC + LeMAC)
+            (100,350) => nose airplane
+      -->
+
+<!--
+      <path d="M{{coLw}},0 m{{Dw}},0 l0,-{{Lw}} l-{{Dw}},0"
+      style="stroke:lightgreen; stroke-width:2; stroke-dasharray:5,5; fill:none;"
+      />
+-->
+
+      <!-- Wing Drag -->
+      <!--
+      <path d="M100,350 m{{coG}},0 l0,{{weight}}" style="stroke:red; stroke-width:3;"/>
+      -->
+
+      <path  __class="plane-axis"
+            style="stroke:green; stroke-width:3;"
+            d="M0,0 l{{_coLe}},0
+              M{{_coLw}},-200 l0,200
+              "
+              />
+
+      <path __class="MAC"
+          d="M{{_LeMAC}}+4 L{{_TeMAC}},4"
+          style="stroke:white; stroke-width:4;"
+      />
+
+      <path style="stroke:red; stroke-width:3;"
+            d="M{{_coLw}},0 m-2,0 l0,{{_Lw_neg}}
+               M{{_coLw}},0 m+4,0 l0,{{_Lw_neg}}
+               "
+      />
+
+      <path style="stroke:blue; stroke-width:3;"
+            d="M{{_coLw}},0 l0,{{_CL_wing}}"
+      />
+
+      <g transform="translate({{_coLt}},-70) rotate({{_aoa_tail_deg_neg}}, 0 0)">
+        <path style="stroke:green; stroke-width:3;"
+              d="M-20,0 l100,0 m-80,-80 l0,100"
+        />
+        <path style="stroke:blue; stroke-width:3;"
+              d="M0,0 l0,{{_CL_tail}}"
+        />
+        <g transform="translate(80,0) rotate({{_elevator_deg}},0,0)">
+          <!--
+          <path d="M100,350 m600,-20 m140,0 l40,0" style="stroke:red; stroke-width:4;" />
+        -->
+          <path d="M0,0 l40,0" style="stroke:red; stroke-width:4;" />
+        </g>
+      </g>
+
+      <!-- stabilizer - Tail Wing -->
+
+      </g> <!-- group plane -->
+
+
+      <defs>
+        <marker id="markerSquare" markerWidth="7" markerHeight="7" refX="4" refY="4"
+                orient="auto">
+            <rect x="1" y="1" width="5" height="5" style="stroke: none; fill:#000000;"/>
+        </marker>
+
+        <marker id="markerArrow" markerWidth="13" markerHeight="13" refX="2" refY="7"
+                orient="auto">
+            <path d="M2,2 L2,13 L8,7 L2,2" style="fill: #000000;" />
+        </marker>
+      </defs>
+
+      <path d="M100,20 l50,0 l0,50 l50,0"
+            style="stroke: #0000cc; stroke-width: 1px; fill: none;
+                         marker-start: url(#markerSquare);
+                         marker-mid: url(#markerSquare);
+                         marker-end: url(#markerArrow);
+
+                       "
+              />
+
+    </svg>
+  </div>
+</template>

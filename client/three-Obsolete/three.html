@@ -1,0 +1,36 @@
+<head>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r74/three.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+
+  <style>
+  div.three {
+    width:640px; overflow-x:visible;
+    height:610px; overflow-y:visible;
+    background-image: url(ed.jpg);
+    background-position: left top;
+    background-repeat: no-repeat;
+    border: 1px solid red;
+  }
+
+  div.three svg {
+    margin:0px;
+    position: absolute; left:60px; top:60px;
+    border: 1px dashed lightgreen;
+    width: 540px;
+    height: 520px;
+  }
+
+  div.dda-tests line {
+    'stroke-width' : '3px';
+    stroke: '#DDFFAA';
+    z-index:20;
+  }
+
+  </style>
+</head>
+
+
+<template name="three">
+  <div class="three">
+  </div>
+</template>

@@ -1,0 +1,53 @@
+
+<head>
+<style>
+div.vbar {
+/*  position: relative; left: 800px; top: 10px;*/
+  width: 50px;
+  height: 245px;
+  background-color: darkgray;
+}
+
+svg.vbar  {
+    __border: 1px dashed red;
+    width:50px;
+    height:330px;
+    __background-color: darkgray;
+    overflow-x: visible;
+}
+
+rect.vbar-handle {
+  x:10px;
+  width:30px; height:10px;
+  fill:rgb(0,0,255);
+  stroke: red;
+  stroke-width:3px;
+  stroke:rgb(0,0,0);
+  z-index:10;
+  background-color: yellow;
+  transition: y 0.5s ease;
+}
+
+svg.vbar text {
+  fill:black;
+  font-family: monospace;
+}
+
+</style>
+</head>
+
+
+<template name="vbar">
+  <div class="vbar">
+    <svg class="vbar">
+      <rect x="20" y="12" width="3" height="200" />
+      <rect class="vbar-handle"
+        x="10" y="{{vbar_y}}"
+        width="30" height="10"
+        style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"
+        />
+        <text x="40" y="228" style="font-weight:regular; font-family:monospace; text-anchor:end;">{{percent}}%</text>
+        <text x="25" y="242" style="font-weight:bold; font-family:monospace; text-anchor:middle;">{{label}}</text>
+    </svg>
+  </div>
+</template>

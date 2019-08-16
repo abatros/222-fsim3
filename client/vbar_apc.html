@@ -1,0 +1,63 @@
+
+<head>
+<style>
+div.vbar2 {
+/*  position: relative; left: 800px; top: 10px;*/
+  width: 50px;
+  height: 245px;
+  background-color: darkgray;
+}
+
+svg.vbar2  {
+    __border: 1px dashed red;
+    width:500px;
+    height:330px;
+    __background-color: darkgray;
+    overflow-x: visible;
+}
+
+rect.vbar-handle2 {
+  x:10px;
+  width:30px; height:10px;
+  fill:rgb(0,0,255);
+  stroke: red;
+  stroke-width:3px;
+  stroke:rgb(0,0,0);
+  z-index:10;
+  background-color: yellow;
+  __transition: y 0.5s ease;
+}
+
+svg.vbar2 text {
+  fill:black;
+  font-family: monospace;
+}
+
+</style>
+</head>
+
+
+<template name="vbar_apc">
+  <div class="vbar">
+    <svg class="vbar">
+      <rect x="20" y="10" width="3" height="200" />
+<!--
+      <rect class="vbar-handle" y="{{vbar_position}}"/>
+    -->
+      <rect class="vbar-handle"
+        x="10" y="{{vbar_y}}"
+        width="30" height="10"
+        style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"
+        />
+        <text x="40" y="225" style="font-weight:regular; font-family:monospace; text-anchor:end;">{{apc.xa}}%</text>
+        <text x="33" y="240" style="font-weight:bold; font-family:monospace; text-anchor:end;">{{label}}</text>
+<!--
+        <text x="0" y="240">v: {{apc.dda1.x}}</text>
+        <text x="0" y="255">x: {{apc.dda2.x}}</text>
+        <text x="0" y="270">t: {{apc.dda3.x}}</text>
+        <text x="0" y="285">s: {{apc.acc}}</text>
+        <text x="0" y="300">xa: {{apc.xa}}</text>
+-->
+    </svg>
+  </div>
+</template>

@@ -1,0 +1,260 @@
+<head>
+<style>
+.pfd2 {
+  width:900px;
+  height:900px;
+  z-index:11;
+}
+
+svg.pfd2 {
+  fill: 'gray';
+  stroke: 'none';
+  stroke-width: '0px';
+  background-color: #505050;
+}
+
+.bank-angle {
+  stroke:white; stroke-width:2px;
+  fill: transparent;
+}
+
+</style>
+</head>
+
+<template name="pfd2">
+  <div class="pfd2"
+      style="position:absolute; left:{{left}}; top:{{top}};"
+      >
+
+
+    {{> ias_tape top="240px" left="10px"}}
+    {{> vario left="800px" top="300px"}}
+
+    <svg class='pfd2'>
+      <rect x="0" y="0" width="900" height="900"
+          style="fill:black; stroke:lightgreen;"
+      />
+
+      <path d="M200,0 l0,900 M400,0 l0,900 M600,0 l0,900 M800,0 l0,900 M0,450 l900,0 M0,250 l900,0 M0,650 l900,0"
+          style="fill:black; stroke:#404040; stroke-width:1px; shape-rendering: crispEdges;"
+      />
+
+
+
+      <defs>
+        <clipPath id="h-window1">
+            <rect x="200" y="225" width="400" height="400" />
+        </clipPath>
+        <clipPath id="rr-30">
+            <path d="M200,280
+                    a30,30,0,0,1,30,-30 l340,0
+                    a30,30,0,0,1,30,30 l0,340
+                    a30,30,0,0,1,-30,30 l-340,0
+                    a30,30,0,0,1,-30,-30 z"/>
+        </clipPath>
+        <clipPath id="rr-50">
+            <path d="M200,300 a50,50,0,0,1,50,-50
+                    l300,0 a50,50,0,0,1,50,50
+                    l0,300 a50,50,0,0,1,-50,50
+                    l-300,0 a50,50,0,0,1,-50,-50 z"/>
+        </clipPath>
+        <!--
+        <clipPath id="rr-60">
+            <path d="M200,310
+                    a60,60,0,0,1,60,-60 l280,0
+                    a60,60,0,0,1,60,60 l0,280
+                    a60,60,0,0,1,-60,60 l-280,0
+                    a60,60,0,0,1,-60,-60 z"/>
+        </clipPath>
+        <clipPath id="rr-70">
+            <path d="M200,320
+                    a70,70,0,0,1,70,-70 l260,0
+                    a70,70,0,0,1,70,70 l0,260
+                    a70,70,0,0,1,-70,70 l-260,0
+                    a70,70,0,0,1,-70,-70 z"/>
+        </clipPath>
+      -->
+      <clipPath id="disk">
+        <circle cx="400" cy="450" r="189" />
+      </clipPath>
+      </defs>
+
+<g clip-path="url(#rr-30)">
+<g transform="translate(0,{{pitch}}) rotate({{roll}},400,{{y_rotation}})">
+  <!-- blue-sky -->
+  <rect x="130" y="-90" width="540" height="540"
+      style="fill:rgb(140,180,236); stroke:white; stroke-width:0px;"
+  />
+
+  <!-- brown earth -->
+  <rect x="130" y="450" width="540" height="540"
+      style="fill:#A56666; fill:rgb(140,99,76); stroke:white; stroke-width:0px;"
+  />
+</g>
+</g>
+
+<g clip-path="url(#disk)">
+<g transform="translate(0,{{pitch}}) rotate({{roll}},400,{{y_rotation}})">
+
+
+
+
+      <!-- pitch grades -->
+      <path d="
+              M200,450 l400,0
+              M380,430 l40,0
+              M370,410 l60,0
+              M380,390 l40,0
+              M310,370 l180,0
+              M380,350 l40,0
+              M370,330 l60,0
+              M380,310 l40,0
+              M310,290 l180,0
+              M380,270 l40,0
+              M370,250 l60,0
+              M380,230 l40,0
+              M310,210 l180,0
+
+
+              M380,470 l40,0
+              M370,490 l60,0
+              M380,510 l40,0
+              M310,530 l180,0
+              M380,550 l40,0
+              M370,570 l60,0
+              M380,590 l40,0
+              M310,610 l180,0
+              M380,630 l40,0
+              M370,650 l60,0
+              M380,670 l40,0
+              M310,690 l180,0
+              "
+          style="fill:black; stroke:white; stroke-width:1px; __shape-rendering: crispEdges;"
+      />
+
+      <!-- LEFT -->
+      <text x="280" y="375"
+          style="fill:white; stroke:none;"
+      >10</text>
+      <text x="280" y="295"
+          style="fill:white; stroke:none;"
+      >20</text>
+      <text x="280" y="215"
+          style="fill:white; stroke:none;"
+      >30</text>
+
+      <text x="280" y="535"
+          style="fill:white; stroke:none;"
+      >10</text>
+      <text x="280" y="615"
+          style="fill:white; stroke:none;"
+      >20</text>
+      <text x="280" y="695"
+          style="fill:white; stroke:none;"
+      >30</text>
+
+      <!-- RIGHT -->
+      <text x="505" y="375"
+          style="fill:white; stroke:none;"
+      >10</text>
+      <text x="505" y="295"
+          style="fill:white; stroke:none;"
+      >20</text>
+      <text x="505" y="215"
+          style="fill:white; stroke:none;"
+      >30</text>
+      <text x="505" y="535"
+          style="fill:white; stroke:none;"
+      >10</text>
+      <text x="505" y="615"
+          style="fill:white; stroke:none;"
+      >20</text>
+      <text x="505" y="695"
+          style="fill:white; stroke:none;"
+      >30</text>
+
+</g>
+<g transform="rotate({{roll}},400,450)">
+  <path d="M400,262 l10,15 l-20,0 z" class="bank-angle"/>
+</g>
+</g>
+
+      <!-- bank angles -->
+
+      <g transform="translate(400,450)">
+
+      <path d="M0,-199 l6,0 l-6,6 l-6,-6 z" class="bank-angle" style="fill:white;"/>
+
+      <line x1="{{a10.x1}}" y1="{{a10.y1}}" x2="{{a10.x2}}" y2="{{a10.y2}}" class="bank-angle"/>
+      <line x1="-{{a10.x1}}" y1="{{a10.y1}}" x2="-{{a10.x2}}" y2="{{a10.y2}}" class="bank-angle"/>
+
+      <line x1="{{a20.x1}}" y1="{{a20.y1}}" x2="{{a20.x2}}" y2="{{a20.y2}}" class="bank-angle"/>
+      <line x1="-{{a20.x1}}" y1="{{a20.y1}}" x2="-{{a20.x2}}" y2="{{a20.y2}}" class="bank-angle"/>
+
+      <line x1="{{a30.x1}}" y1="{{a30.y1}}" x2="{{a30.x2}}" y2="{{a30.y2}}" class="bank-angle"/>
+      <line x1="-{{a30.x1}}" y1="{{a30.y1}}" x2="-{{a30.x2}}" y2="{{a30.y2}}" class="bank-angle"/>
+
+      <line x1="{{a45.x1}}" y1="{{a45.y1}}" x2="{{a45.x2}}" y2="{{a45.y2}}" class="bank-angle"/>
+      <line x1="-{{a45.x1}}" y1="{{a45.y1}}" x2="-{{a45.x2}}" y2="{{a45.y2}}" class="bank-angle"/>
+
+      <line x1="{{a60.x1}}" y1="{{a60.y1}}" x2="{{a60.x2}}" y2="{{a60.y2}}" class="bank-angle"/>
+      <line x1="-{{a60.x1}}" y1="{{a60.y1}}" x2="-{{a60.x2}}" y2="{{a60.y2}}" class="bank-angle"/>
+
+      <line x1="{{a90.x1}}" y1="{{a90.y1}}" x2="{{a90.x2}}" y2="{{a90.y2}}" class="bank-angle"/>
+      <line x1="-{{a90.x1}}" y1="{{a90.y1}}" x2="-{{a90.x2}}" y2="{{a90.y2}}" class="bank-angle"/>
+
+      </g>
+
+      <!-- wings -->
+      <rect x="395" y="445" width="10" height="10"
+          style="fill:transparent; stroke:white; stroke-width:1px; shape-rendering: crispEdges;z-index:99;"
+      />
+      <path d="M230,445 l100,0 l0,20 l-10,0 l0,-10 l-90,0 z"
+          style="fill:black; stroke:white; stroke-width:1px; shape-rendering: crispEdges; z-index:99;"
+      />
+      <path d="M570,445 l-100,0 l0,20 l10,0 l0,-10 l90,0 z"
+          style="fill:black; stroke:white; stroke-width:1px; shape-rendering: crispEdges; z-index:99;"
+      />
+
+      <!--
+      <path d="M310,0 l0,900 M490,0 l0,900 M400,0 l0,900 "
+          style="fill:black; stroke:#404040; stroke-width:1px; shape-rendering: crispEdges;"
+      />
+    -->
+
+
+      <text x="705" y="15"
+          style="fill:white; stroke:none;"
+      >altitude: {{altitude}}</text>
+
+<style>
+text.pfd-ktas {
+  fill: 'gray';
+  stroke: 'none';
+  stroke-width: '0px';
+  background-color: #505050;
+  font-family: 'Droid Sans Mono';
+  __font-weight: 600;
+  font-size:23px;
+  __letter-spacing: 2px;
+  fill : #DDFFAA;
+  opacity: 0.8;
+  stroke-size: 3px; stroke: #DDFFAA;
+  __text-anchor:end;
+  __alignment-baseline:middle;
+}
+</style>
+
+      <text x="10" y="700" class="pfd-ktas"
+      >KTAS:{{KTAS}}</text>
+      <text x="10" y="730" class="pfd-ktas"
+      >T:{{etime}}:{{ticks}}:{{overheat}}</text>
+
+
+
+    </svg>
+
+    {{> alti_tape top="240px" left="650px"}}
+
+  </div>
+</template>

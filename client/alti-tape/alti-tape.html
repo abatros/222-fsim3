@@ -1,0 +1,56 @@
+<head>
+<style>
+.alti-tape {
+  width:100px;
+  height:420px;
+}
+
+svg.alti-tape {
+  fill: 'gray';
+  stroke: 'none';
+  stroke-width: '0px';
+  background-color: #505050;
+}
+
+.alti-tape text.d100 {
+  font-size: 18px;
+  font-family: 'Droid Sans Mono';
+  __font-weight: 600;
+  __color: white;
+  __letter-spacing: 1px;
+  fill : white;
+  stroke: white;
+  stroke-width: 0px;
+  text-anchor: end;
+  opacity: 0.75;
+}
+
+</style>
+</head>
+
+<template name="alti_tape">
+  <div class="alti-tape"
+      style="position:absolute; left:{{left}}; top:{{top}}; width:150px;">
+    <svg class="alti-tape" style="position:absolute;">
+    </svg>
+    <svg style="position:absolute; width:150px;">
+      <path d="M10,210 l12,-12 l0,-18 l94,0 l0,60 l-94,0 l0,-18 l-12,-12 z"
+          style="fill:black; stroke:null; stroke-width:0px;"
+      />
+      <path d="M13,210 l12,-12 l0,-15 l90,0 l0,54 l-90,0 l0,-16 l-10,-10 z"
+          style="fill:none; stroke:white; stroke-width:2px; opacity:0.5;"
+      />
+    </svg>
+    <svg class="alti-index" style="position:absolute; width:150px;">
+    </svg>
+    <!--
+    <svg class="alti-100" style="position:absolute; width:150px;">
+      <g transform="translate(0,5)">
+        <text x="84" y="{{fl.y9}}" class="d100">{{fl.d9}}</text>
+        <text x="84" y="{{fl.y0}}" class="d100">{{fl.d0}}</text>
+        <text x="84" y="{{fl.y1}}" class="d100">{{fl.d1}}</text>
+      </g>
+    </svg>
+  -->
+  </div>
+</template>

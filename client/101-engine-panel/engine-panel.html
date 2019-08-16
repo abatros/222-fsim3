@@ -1,0 +1,88 @@
+<head>
+  <style>
+  div.e-panel {
+    width:640px; overflow-x:visible;
+    height:610px; overflow-y:visible;
+    background-image: url(ed.jpg);
+    background-position: left top;
+    background-repeat: no-repeat;
+    border: 1px solid red;
+  }
+
+
+  .my-rect {
+    color: yellow;
+    background-color: red;
+  }
+
+  svg.svg-e-panel {
+    width:640px; overflow-x:visible;
+    height:610px; overflow-y:visible;
+  }
+
+
+  .left-epr {
+    position:absolute; left:150px; top:57px; margin:0; padding:0; width:140px;
+  }
+
+  .right-epr {
+    position:absolute; left:338px; top:57px; margin:0; padding:0; width:140px;
+  }
+
+
+  </style>
+</head>
+
+
+<template name="engine_panel">
+  <div id="engine-panel">
+
+  <div style="position:absolute; left:0px; top:0px; margin:0; padding:0;">
+  {{> engine_panel_background}}
+  </div>
+
+  <div class="left-epr" style="">
+  {{> epr_panel name="left-epr"}}
+  </div>
+
+
+  {{!--
+
+  <div class="right-epr" style="">
+  {{> epr_panel name="right-epr"}}
+  </div>
+
+
+
+  <div style="position:absolute; left:157px; top:183px; margin:0; padding:0;">
+  {{> EGT_panel name="EGT-left"}}
+  </div>
+
+  <div style="position:absolute; left:346px; top:183px; margin:0; padding:0;">
+  {{> EGT2_panel name="EGT-right" left="346" top="183"}}
+  </div>
+
+  <div style="position:absolute; left:157px; top:263px; margin:0; padding:0;">
+  {{> N1_panel name="N1-left"}}
+  </div>
+
+  <div style="position:absolute; left:346px; top:263px; margin:0; padding:0;">
+  {{> N1_panel name="N1-right"}}
+  </div>
+
+  <div style="position:absolute; left:50px; top:222px; margin:0; padding:0;">
+  {{> fuel_flow name="left-ff"}}
+  </div>
+
+  --}}
+
+
+  <!--
+  <div style="position:absolute; left:700px; top:10px;
+    overflow-x:display; overflow-y:display;">
+  {{> auto_throttle}}
+  </div>
+  -->
+
+  </div>
+</template>

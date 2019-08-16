@@ -1,0 +1,21 @@
+<template name="test_cosine2">
+  <div class="test-cosine" style="fill:red; stroke:red; stroke-width:0px;">
+
+    <div style="z-index:10;position:relative; top:-150px;">
+    </div>
+
+    <svg style="transform-origin:400px 500px; margin-top:10px; width:1000px; height:800px;
+    fill:red, stroke:red;">
+    <text x="110" y="30" style="text-anchor:start;">pulses:{{pulses}}</text>
+    <text x="310" y="30" style="text-anchor:start;">cycles:{{cycles}}</text>
+    <text x="510" y="30" style="text-anchor:start;">na:{{na}}:200</text>
+
+    <line x1="400" y1="400" x2={{x2}} y2={{y2}}
+        style="stroke:red; stroke-width:1px;"/>
+<!--
+<text x="110" y="30" style="text-anchor:start;">time:{{time}}</text>
+      <text x="10" y="30" style="text-anchor:start;">ticks:{{ticks}}</text>
+    -->
+    </svg>
+  </div>
+</template>

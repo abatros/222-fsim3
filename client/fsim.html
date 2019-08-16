@@ -1,0 +1,129 @@
+<head>
+  <title>fsim</title>
+<link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Dosis:400,300,500,600,700,800' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+
+<!--
+<link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+-->
+
+  <style>
+#panel {
+  margin: 0; padding:0;
+  width: 2000px;
+  __height: 650px;
+  background: gray;
+  position: absolute;
+}
+
+
+
+  </style>
+</head>
+
+
+<head>
+  <style>
+  div.e-panel-background {
+    width:640px; overflow-x:visible;
+    height:610px; overflow-y:visible;
+    background-image: url(ed.jpg);
+    background-position: left top;
+    background-repeat: no-repeat;
+    border: 1px solid red;
+  }
+
+  button.top-panel {
+    padding:5px 10px 5px 10px; margin:10px 5px 10px 5px;
+    width:80px;
+    font-weight: bold;
+    color: gray;
+  }
+  </style>
+</head>
+
+<body>
+{{> top_panel_selector}}
+{{> aerodynamic_station}}
+
+<!--
+{{> alti_tape top="100px" left="600px"}}
+-->
+
+<div style="position:absolute; left:920px; top:70px; margin:0; padding:0;">
+  {{> hold_resume_button}}
+</div>
+
+
+<div style="position:absolute; left:920px; top:100px; margin:0; padding:0;">
+{{> vbar name="throttle" label="ENG" zero="0"}}
+</div>
+
+<div style="position:absolute; left:980px; top:100px; margin:0; padding:0;">
+{{> vbar name="vbar-aoa-tail" label="tail" zero="100"}}
+</div>
+
+<div style="position:absolute; left:1040px; top:100px; margin:0; padding:0;">
+{{> vbar name="coG-ratio" label="coG" zero="0"}}
+</div>
+
+<div style="position:absolute; left:1100px; top:100px; margin:0; padding:0;">
+{{> flaps}}
+</div>
+
+
+<!--
+<div style="position:absolute; left:700px; top:100px; margin:0; padding:0;">
+{{> Throttle name="left-throttle"}}
+</div>
+-->
+<!--
+<div style="position:absolute; left:740px; top:100px; margin:0; padding:0;">
+{{> Throttle name="right-throttle"}}
+</div>
+-->
+
+<!--
+<div style="position:absolute; left:800px; top:100px; margin:0; padding:0;">
+{{> attack name="attack"}}
+</div>
+-->
+
+</body>
+
+
+<template name="hold_resume_button">
+  <button class="js-hold-resume"
+    title="hold-resume-fsim"
+    >{{hold_resume_label}}
+  </button>
+</template>
+
+
+<template name="top_panel_selector">
+  <div style="height:50px; background-color:lightblue;">
+  <button class="js-turbines top-panel">Turbines</button>
+  <button class="js-turbine-dda top-panel">TU-data</button>
+  <button class="js-compass top-panel">HSI</button>
+  <button class="js-PFD1 top-panel">PFD1</button>
+  <button class="js-PFD2 top-panel">PFD2</button>
+  <!--
+  <button class="js-webgl top-panel">webGL</button>
+  <button class="js-pixi top-panel">pixi</button>
+  <button class="js-three top-panel">three</button>
+-->
+  <button class="js-centrage top-panel">centrage</button>
+  <button class="js-psim top-panel">psim</button>
+  <button class="js-dash top-panel">dash</button>
+  <button class="js-a1-tests top-panel">a1-tests</button>
+  <button class="js-formules top-panel">formules</button>
+  </div>
+</template>
+
+
+
+<template name="engine_panel_background">
+  <div class='e-panel-background'>
+  </div>
+</template>

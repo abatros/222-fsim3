@@ -1,0 +1,31 @@
+// ---------------------------------------------------------------
+// servo on roll
+
+Meteor.fsim.plane.set('bank', 0);
+
+var bank_req = 0;
+var actual_bank = 0;
+var ror = 0;
+
+const h_roll = function(){
+  bank_req += ror;
+  if (bank_req > actual_bank)
+    actual_bank += 1;
+  else if (bank_req < actual_bank)
+    actual_bank -= 1;
+  Meteor.fsim.plane.set('bank', actual_bank);
+};
+
+setInterval(h_roll, 100); // refresh each 10 ms
+
+Tracker.autorun(function(){ // for tests.
+  ror += gp.get('roll')*60;
+  // first approx: this is the rate or roll requested from pilot
+  // each dt we add the reading from gamepad.
+});
+
+// ---------------------------------------------------------------
+
+Tracker.autorun(function(){
+
+});

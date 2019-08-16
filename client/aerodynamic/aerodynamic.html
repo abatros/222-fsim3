@@ -1,0 +1,151 @@
+<template name="aerodynamic_station">
+  <div id="aerodynamic-station"
+    style="width:0px; height:0px; overflow-x:hidden; overflow-y:hidden">
+  </div>
+</template>
+
+
+
+<head>
+  <style>
+  div.dda-display {
+    position:relative;
+    width:640px; overflow-x:visible;
+    height:610px; overflow-y:visible;
+    background-image: url(ed.jpg);
+    background-position: left top;
+    background-repeat: no-repeat;
+    border: 1px solid red;
+  }
+
+  div.dda-display svg {
+    margin:0px;
+    position: absolute; left:50px; top:50px;
+    border: 1px dashed lightgreen;
+    width: 540px;
+    height: 520px;
+    background-color: #202020; //rgba(100,100,100,0.5);
+  }
+
+  div.dda-display text {
+    fill: lightgreen;
+    font-family: 'Dosis';
+    font-size: 18px;
+    font-weight: 600;
+    text-anchor: 'end';
+  }
+
+  </style>
+</head>
+
+
+<template name="turbine_dda">
+  <div class="dda-display">
+
+<!--
+    <div style="position:absolute; left:1030px; top:100px; margin:0; padding:0;">
+    {{> vbar name="FF" label="FF" zero="0"}}
+    </div>
+-->
+
+    <svg>
+      <text x="20" y="25">Throttle:</text>
+      <text x="120" y="25">{{throttle}}</text>
+      <text x="180" y="25"></text>
+
+      <text x="20" y="50">Thrust:</text>
+      <text x="120" y="50">{{tu1.dda2.x}}</text>
+      <text x="180" y="50">{{tu1.dda2.k}}</text>
+<!--
+      <text x="240" y="30"> >> {{turbine.dda2.acc}}</text>
+-->
+      <text x="20" y="75">Drag v2:</text>
+      <text x="120" y="75">{{tu1.dda5.x}}</text>
+      <text x="180" y="75">{{tu1.dda5.k}}</text>
+      <!--
+      <text x="240" y="60"> >> {{turbine.dda5.acc}}</text>
+    -->
+
+      <text x="20" y="100">Drag v1:</text>
+      <text x="120" y="100">{{N1}}</text>
+      <text x="180" y="100">{{tu1.dda7.k}}</text>
+      <!--
+      <text x="240" y="90"> >> {{turbine.dda7.acc}}</text>
+    -->
+
+
+
+      <text x="20" y="125">N1:</text>
+      <text x="120" y="125">{{tu1.dda3.x}}</text>
+      <text x="180" y="125">{{tu1.dda3.k}}</text>
+      <text x="240" y="125">rpm: {{N1_rpm}}</text>
+      <!--
+      <text x="240" y="90"> >> {{turbine.dda3.acc}}</text>
+      -->
+
+      <text x="20" y="150">N1: (avg)</text>
+      <text x="120" y="150">% {{tu1.N1_}}</text>
+      <text x="180" y="150">rpm: {{tu1.N1_rpm_}}</text>
+
+      <text x="20" y="175">EPR: (avg)</text>
+      <text x="120" y="175">%</text>
+      <text x="180" y="175"></text>
+
+      <text x="20" y="200">EGT: *C</text>
+      <text x="120" y="200">{{tu1.EGT}}</text>
+      <text x="180" y="200">{{tu1.dda3.k}}</text>
+
+<!--
+      <text x="20" y="300">FF: kg/h</text>
+      <text x="120" y="300">{{turbine.fuel_flow}}</text>
+      <text x="180" y="300"></text>
+-->
+
+      <text x="20" y="225">FF: kg/h</text>
+      <text x="120" y="225">{{FF_kgh}}</text>
+      <text x="180" y="225"></text>
+
+      <text x="20" y="275">aoa-Tail</text>
+      <text x="120" y="275">{{aoa_tail}}</text>
+
+
+      <text x="20" y="300">G-Speed %</text>
+      <text x="120" y="300">{{IAS}}</text>
+      <text x="170" y="300">{{plane.dda3.x}}</text>
+      <text x="220" y="300">{{plane.dda3.k}}</text>
+
+      <text x="20" y="325">Thrust %</text>
+      <text x="120" y="325">{{thrust}}</text>
+      <text x="180" y="325">{{plane.dda2.k}}</text>
+
+      <text x="20" y="350">Drag</text>
+      <text x="120" y="350">{{kv2}}</text>
+      <text x="180" y="350">{{plane.dda5.k}}</text>
+      <text x="230" y="350">{{plane.dda4.x}}</text>
+      <text x="260" y="350">{{plane.dda4.k}}</text>
+      <text x="310" y="350">aoa: {{aoa}}</text>
+      <text x="390" y="350">CD: {{c_drag}}</text>
+
+      <text x="20" y="375">Lift</text>
+      <text x="120" y="375">{{plane.dda102.x}}</text>
+      <text x="180" y="375">{{plane.dda102.k}}</text>
+      <text x="230" y="375">CL: {{c_lift}}={{plane.dda11.x}}</text>
+
+      <text x="20" y="400">Weight</text>
+      <text x="120" y="400">{{plane.dda103.x}}</text>
+      <text x="180" y="400">{{plane.dda103.k}}</text>
+
+      <text x="20" y="425">Climb</text>
+      <text x="120" y="425"> ft/min: {{rc}}</text>
+      <text x="230" y="425">{{plane.dda13.x}}</text>
+      <text x="280" y="425">{{plane.dda13.k}}</text>
+
+      <text x="20" y="450">elevation ft</text>
+      <text x="120" y="450">{{plane.servo101.y}}</text>
+
+
+      <text x="350" y="475">Timer: {{turbine.timer}}</text>
+
+    </svg>
+  </div>
+</template>

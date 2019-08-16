@@ -1,0 +1,63 @@
+<head>
+<style>
+.ias-tape {
+  width:75px;
+  height:420px;
+  z-index:11;
+}
+
+svg.ias-tape {
+  fill: 'gray';
+  stroke: 'none';
+  stroke-width: '0px';
+  background-color: #505050;
+  font-family: 'Droid Sans Mono';
+  __font-weight: 600;
+  font-size:23px;
+  __letter-spacing: 2px;
+  fill : #DDFFAA;
+  opacity: 0.8;
+  stroke-size: 3px; stroke: #DDFFAA;
+  text-anchor:end;
+  alignment-baseline:middle;
+}
+
+
+</style>
+</head>
+
+<template name="ias_tape">
+  <div class="ias-tape"
+      style="position:absolute; left:{{left}}; top:{{top}};">
+    <svg class='ias-tape'>
+      <g transform="translate(0,{{y0}})">
+      <path d="M52,00 l20,0
+              M52,30 l20,0
+              M52,60 l20,0
+              M52,90 l20,0
+              M52,120 l20,0
+              M52,150 l20,0
+              M52,180 l20,0
+              M52,210 l20,0
+              M52,240 l20,0
+              M52,270 l20,0
+              M52,300 l20,0
+              M52,330 l20,0
+              M52,360 l20,0
+              M52,390 l20,0
+              M52,420 l20,0
+              M52,450 l20,0
+              " />
+      <text x="48" y="0" alignment-baseline="middle" style="text-anchor:end;">{{mkv 0}}</text>
+      <text x="48" y="60" alignment-baseline="middle" style="text-anchor:end;">{{mkv 2}}</text>
+      <text x="48" y="120" alignment-baseline="middle" style="text-anchor:end;">{{mkv 4}}</text>
+      <text x="48" y="180" alignment-baseline="middle" style="text-anchor:end;">{{mkv 6}}</text>
+      <text x="48" y="240" alignment-baseline="middle" style="text-anchor:end;">{{mkv 8}}</text>
+      <text x="48" y="300" alignment-baseline="middle" style="text-anchor:end;">{{mkv 10}}</text>
+      <text x="48" y="360" alignment-baseline="middle" style="text-anchor:end;">{{mkv 12}}</text>
+      <text x="48" y="420" alignment-baseline="middle" style="text-anchor:end;">{{mkv 14}}</text>
+      <text x="48" y="480" alignment-baseline="middle" style="text-anchor:end;">{{mkv 16}}</text>
+      </g>
+    </svg>
+  </div>
+</template>

@@ -1,0 +1,55 @@
+
+<head>
+<style>
+div.attack {
+/*  position: relative; left: 800px; top: 10px;*/
+  width: 50px;
+  height: 220px;
+  background-color: darkgray;
+}
+
+svg.attack  {
+    __border: 1px dashed red;
+    width:500px;
+    height:330px;
+    __background-color: darkgray;
+    overflow-x: visible;
+}
+
+rect.attack-handle {
+  x:10px;
+  width:30px; height:10px;
+  fill:rgb(0,0,255);
+  stroke: red;
+  stroke-width:3px;
+  stroke:rgb(0,0,0);
+  z-index:10;
+  background-color: yellow;
+  transition: y 0.5s ease;
+}
+
+svg.attack text {
+  fill:black;
+  font-family: monospace;
+}
+
+</style>
+</head>
+
+
+<template name="attack">
+  <div class="attack">
+    <svg class="attack" style="width:50px; height:220px; overflow-y:visible;">
+      <rect x="20" y="10" width="3" height="200" />
+<!--
+      <rect class="attack-handle" y="{{attack_position}}"/>
+    -->
+      <rect class="attack-handle"
+        x="10" y="{{attack_y}}"
+        width="30" height="10"
+        style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"
+        />
+      <text x="0" y="240">attack:{{aoa}}%</text>
+    </svg>
+  </div>
+</template>

@@ -1,0 +1,59 @@
+
+<head>
+<style>
+div.throttle {
+/*  position: relative; left: 800px; top: 10px;*/
+  width: 50px;
+  height: 220px;
+  background-color: darkgray;
+}
+
+svg.throttle  {
+    __border: 1px dashed red;
+    width:500px;
+    height:330px;
+    __background-color: darkgray;
+    overflow-x: visible;
+}
+
+rect.throttle-handle {
+  x:10px;
+  width:30px; height:10px;
+  fill:rgb(0,0,255);
+  stroke: red;
+  stroke-width:3px;
+  stroke:rgb(0,0,0);
+  z-index:10;
+  background-color: yellow;
+  transition: y 0.5s ease;
+}
+
+svg.throttle text {
+  fill:black;
+  font-family: monospace;
+}
+
+</style>
+</head>
+
+
+<template name="Throttle">
+  <div class="throttle">
+    <svg class="throttle">
+      <rect x="20" y="10" width="3" height="200" />
+<!--
+      <rect class="throttle-handle" y="{{throttle_position}}"/>
+    -->
+      <rect class="throttle-handle"
+        x="10" y="{{throttle_y}}"
+        width="30" height="10"
+        style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"
+        />
+      <text x="0" y="240">thrust:{{thrust}}%</text>
+      <text x="0" y="260">throttle:{{throttle}}%</text>
+      <text x="0" y="280">N1:{{N1_rpm}} (rpm)</text>
+      <text x="0" y="300">N1:{{N1_mva}} %(mva)</text>
+      <text x="0" y="320">EGT:{{egt_celsius}}</text>
+    </svg>
+  </div>
+</template>

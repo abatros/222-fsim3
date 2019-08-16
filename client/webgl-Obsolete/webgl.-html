@@ -1,0 +1,74 @@
+<head>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/3.0.7/pixi.min.js"></script>
+
+  <style>
+  div.webgl {
+    width:640px; overflow-x:visible;
+    height:610px; overflow-y:visible;
+    background-image: url(ed.jpg);
+    background-position: left top;
+    background-repeat: no-repeat;
+    border: 1px solid red;
+  }
+
+  div.webgl svg {
+    margin:0px;
+    position: absolute; left:60px; top:60px;
+    border: 1px dashed lightgreen;
+    width: 540px;
+    height: 520px;
+  }
+
+  div.dda-tests line {
+    'stroke-width' : '3px';
+    stroke: '#DDFFAA';
+    z-index:20;
+  }
+
+
+  svg rect {
+    fill: rgba(0,0,0,0.5);
+  }
+
+
+canvas {
+  position: absolute; left:60px; top:60px;
+}
+
+  </style>
+</head>
+
+
+<template name="webgl">
+  <div class="webgl">
+<!--
+    <svg viewBox="50 50 600 600">
+    </svg>
+-->
+
+<!--
+  <svg class="base">
+    <rect x="0" y="0" width="540" height="520"
+      style="__fill:%202020"
+      />
+    <circle cx="270" cy="260" r="250"
+      style="fill:none; stroke-width:2px; stroke:lightgreen"/>
+  </svg>
+  <svg class="rose">
+    <rect x="0" y="0" width="540" height="520"
+      class="rose"
+      style="fill:pink; opacity:0.25;"
+      />
+      <g transform="rotate({{angle}} 270 260)">
+        <line x1="0" y1="260" x2="540" y2="260" style="stroke:blue; stroke-width:2px;"/>
+      </g>
+  </svg>
+-->
+  <canvas id="glcanvas" width="540" height="520">
+    Your browser doesn't appear to support the
+    <code>&lt;canvas&gt;</code> element.
+  </canvas>
+
+  </div>
+</template>

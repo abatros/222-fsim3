@@ -1,0 +1,801 @@
+
+
+
+<head>
+  <style>
+  .centrage-panel {
+    background-color:black;
+    color:white;
+    font-family: monospace;
+    min-height:900px;
+    padding-left:10px;
+  }
+
+  svg.formule {
+    __margin-left:30px;
+    __margin-top:30px;
+    width:3000px; height:3000px;
+    __font-family: 'Droid Sans Mono';
+    __font-weight: 600;
+    font-size:23px;
+    __letter-spacing: 2px;
+    fill : #DDFFAA;
+    __opacity: 0.8;
+    stroke-size: 0px; stroke: #DDFFAA;
+    text-anchor:end;
+  }
+
+text.small-text {
+  font-family: 'Arial';
+  __font-family: 'Droid Sans Mono';
+  font-size: 10pt;
+  font-weight: regular;
+  stroke-size:0px; stroke: none;
+  fill: black;
+  __color:black;
+}
+
+text.small-text-la {
+  font-family: 'Arial';
+  font-size: 10pt;
+  font-weight: regular;
+  stroke: none;
+  fill: black;
+  __color:black;
+  text-anchor:start;
+}
+
+text.label {
+  font-family: 'Droid Sans Mono';
+  font-size: 10pt;
+  font-weight: bold;
+  stroke: none;
+  fill: blue;
+  __color:black;
+  text-anchor:start;
+}
+
+text.dda-y {
+  font-family: 'Arial';
+  font-size: 10pt;
+  font-weight: regular;
+  stroke: none;
+  fill: black;
+   x:120; y:15;
+}
+text.dda-x {
+  font-family: 'Arial';
+  font-size: 10pt;
+  font-weight: regular;
+  stroke: none;
+  fill: black;
+   x:120; y:33;
+}
+
+tspan.dda-id {
+  font-weight: bold;
+}
+
+  </style>
+</head>
+
+
+<template name="formules">
+  <div style="width:3000px; height:3000px;">
+    <div style="z-index:10;position:relative; top:-150px;">
+      <div style="position:absolute; left:700px; top:200px; margin:0; padding:0;">
+      {{> vbar name="vbar-fo-density" label="rho" zero="0"}}
+      </div>
+      <div style="position:absolute; left:760px; top:200px; margin:0; padding:0;">
+      {{> vbar name="vbar-fo-speed" label="KTAS" zero="0"}}
+      </div>
+      <div style="position:absolute; left:820px; top:200px; margin:0; padding:0;">
+      {{> vbar name="vbar-fo-CL" label="CL" zero="0"}}
+      </div>
+  </div>
+
+    <svg class="formule">
+      <defs>
+        <marker id="markerSquare" markerWidth="7" markerHeight="7" refX="4" refY="4"
+                orient="auto">
+            <rect x="1" y="1" width="5" height="5" style="stroke: none; fill:#000000;"/>
+        </marker>
+
+        <marker id="markerArrow" markerWidth="13" markerHeight="13" refX="2" refY="7"
+                orient="auto">
+            <path d="M2,2 L2,13 L8,7 L2,2" style="fill: #000000;" />
+        </marker>
+
+        <g id="DDA">
+          <path d="M0,0 l30,0 l0,-20 l100,0 l20,20 l-20,20 l-100,0 l0,-20 M150,0 l30,0"
+              style="fill:rgb(200,255,200); stroke:green; stroke-width:2px"
+          />
+        </g>
+        <g id="DDA2">
+          <path d="M10,0 l0,-35 l70,0 l0,15"
+                style="stroke:green; stroke-width:2px; fill:none;"
+            />
+        </g>
+      </defs>
+
+
+
+      <g transform="translate(100,200)">
+        <use xlink:href="#DDA" x="0" y="0"/>
+        <text class="small-text">
+          <tspan x="143" y="4" class="dda-id">101</tspan>
+          <tspan x="110" y="-15">{{fo.servo101.dda4.x}}:{{fo.servo101.dda4.k}}</tspan>
+          <tspan x="110" y="-5">{{fo.dda101.y}}</tspan>
+          <tspan x="110" y="15">{{fo.dda101.x}}:{{fo.dda101.k}}</tspan>
+          <tspan x="130" y="35">kg/m3</tspan>
+          <tspan x="80" y="35">{{fo.density}}</tspan>
+        </text>
+      </g>
+
+      <g transform="translate(280,200)">
+        <use xlink:href="#DDA" x="0" y="0"/>
+        <text class="small-text">
+          <tspan x="143" y="4" class="dda-id">102</tspan>
+          <tspan x="110" y="-25">{{fo.servo102.dda4.x}}:{{fo.servo102.dda4.k}}</tspan>
+          <tspan x="110" y="-5">{{fo.dda102.y}}</tspan>
+          <tspan x="110" y="15">{{fo.dda102.x}}:{{fo.dda102.k}}</tspan>
+        </text>
+      </g>
+
+
+      <g transform="translate(460,200)">
+        <use xlink:href="#DDA" x="0" y="0"/>
+        <text class="small-text">
+          <tspan x="143" y="4" class="dda-id">103</tspan>
+          <tspan x="110" y="-45">{{fo.Lw}}T kgf</tspan>
+          <tspan x="110" y="-25">{{fo.servo103.dda4.x}}:{{fo.servo103.dda4.k}}</tspan>
+          <tspan x="110" y="-5">{{fo.dda103.y}}</tspan>
+          <tspan x="110" y="15">{{fo.dda103.x}}:{{fo.dda103.k}}</tspan>
+          <tspan x="110" y="30">{{fo.CL}} CL</tspan>
+        </text>
+      </g>
+      <g transform="translate(280,50)">
+        <use xlink:href="#DDA" x="0" y="0"/>
+        <text class="small-text">
+          <tspan x="143" y="4" class="dda-id">105</tspan>
+          <tspan x="110" y="-5">{{fo.dda105.y}}</tspan>
+          <tspan x="110" y="15">{{fo.dda105.x}}:{{fo.dda105.k}}</tspan>
+          <tspan x="110" y="35">{{fo.ktas}} kt</tspan>
+          <tspan x="110" y="45">{{fo.v}} m/s</tspan>
+        </text>
+      </g>
+
+      <g transform="translate(460,300)">
+        <use xlink:href="#DDA" x="0" y="0"/>
+        <text class="small-text">
+          <tspan x="143" y="4" class="dda-id">111</tspan>
+          <tspan x="110" y="-25">{{fo.Lw}}T kgf F1</tspan>
+          <tspan x="110" y="-5">{{fo.dda111.y}}</tspan>
+          <tspan x="110" y="15">{{fo.dda111.x}}:{{fo.dda111.k}}</tspan>
+        </text>
+      </g>
+      <g transform="translate(460,400)">
+        <use xlink:href="#DDA" x="0" y="0"/>
+        <text class="small-text">
+          <tspan x="143" y="4" class="dda-id">112</tspan>
+          <tspan x="110" y="-25">{{fo.Lw}}T kgf F2</tspan>
+          <tspan x="110" y="-5">{{fo.dda112.y}}</tspan>
+          <tspan x="110" y="15">{{fo.dda112.x}}:{{fo.dda112.k}}</tspan>
+      </text>
+      </g>
+
+      <path d="M460,200 l0,400 M640,200 l0,400" style="fill:none; stroke:green; stroke-width:2px"/>
+
+<!-- Group PULSE1 -->
+
+      <g transform="translate(40,700)">
+        <text x="300" y="-8" class="label">Bus1: TAS</text>
+        <path class="bus1" d="M300,0 l800,0" style="fill:none; stroke:green; stroke-width:2px"/>
+        <g transform="translate(0,100)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">101</tspan>
+            <tspan x="110" y="-5">{{a1.dda101.y}}</tspan>
+            <tspan x="110" y="15">{{a1.dda101.x}}:{{a1.dda101.k}}</tspan>
+            <tspan x="130" y="35">m/s2</tspan>
+            <tspan x="80" y="35"></tspan>
+          </text>
+        </g>
+        <g transform="translate(180,100)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">102</tspan>
+            <tspan x="110" y="-5">{{a1.dda102.y}}</tspan>
+            <tspan x="110" y="15">{{a1.dda102.x}}:{{a1.dda102.k}}</tspan>
+            <tspan x="130" y="35">1/kg</tspan>
+            <tspan x="80" y="35"></tspan>
+          </text>
+        </g>
+        <g transform="translate(360,100)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <use xlink:href="#DDA2" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">103</tspan>
+            <tspan x="110" y="-5">{{a1.dda103.y}}</tspan>
+            <tspan x="110" y="15">{{a1.dda103.x}}:{{a1.dda103.k}}</tspan>
+            <tspan x="65" y="35">100</tspan>
+            <tspan x="90" y="35">m/s</tspan>
+            <tspan x="130" y="35">200</tspan>
+            <tspan x="140" y="35">kt</tspan>
+          </text>
+        </g>
+        <path d="M460,0 l0,80" style="fill:none; stroke:green; stroke-width:2px"/>
+
+        <g transform="translate(360,200)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">104</tspan>
+            <tspan x="110" y="-5">{{a1.dda104.y}}</tspan>
+            <tspan x="110" y="15">{{a1.dda104.x}}:{{a1.dda104.k}}</tspan>
+            <tspan x="130" y="35">#103.x</tspan>
+            <tspan x="80" y="35"></tspan>
+          </text>
+        </g>
+        <g transform="translate(540,200)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">105</tspan>
+            <tspan x="110" y="-5">{{a1.dda105.y}}</tspan>
+            <tspan x="110" y="15">{{a1.dda105.x}}:{{a1.dda105.k}}</tspan>
+            <tspan x="130" y="35">k105</tspan>
+            <tspan x="80" y="35"></tspan>
+          </text>
+          <path d="M180,0 l140,0 l0,-200" style="fill:none; stroke:green; stroke-width:2px"/>
+        </g>
+
+
+        <g transform="translate(360,300)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">106</tspan>
+            <tspan x="110" y="-5">{{a1.dda106.y}}</tspan>
+            <tspan x="110" y="15">{{a1.dda106.x}}:{{a1.dda106.k}}</tspan>
+            <tspan x="130" y="35">#103.y</tspan>
+            <tspan x="80" y="35"></tspan>
+          </text>
+        </g>
+
+        <g transform="translate(540,300)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">107</tspan>
+            <tspan x="110" y="-5">{{a1.dda107.y}}</tspan>
+            <tspan x="110" y="15">{{a1.dda107.x}}:{{a1.dda107.k}}</tspan>
+            <tspan x="130" y="35">CD</tspan>
+            <tspan x="80" y="35"></tspan>
+          </text>
+        </g>
+
+        <g transform="translate(720,300)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">108</tspan>
+            <tspan x="110" y="-5">{{a1.dda108.y}}</tspan>
+            <tspan x="110" y="15">{{a1.dda108.x}}:{{a1.dda108.k}}</tspan>
+            <tspan x="130" y="35">k108</tspan>
+            <tspan x="80" y="35"></tspan>
+          </text>
+          <path d="M180,0 l20,0 l0,-300" style="fill:none; stroke:green; stroke-width:2px"/>
+      </g>
+
+        <g transform="translate(360,400)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">109</tspan>
+            <tspan x="110" y="-5">{{a1.dda109.y}}</tspan>
+            <tspan x="110" y="15">{{a1.dda109.x}}:{{a1.dda109.k}}</tspan>
+            <tspan x="130" y="35">kN</tspan>
+            <tspan x="80" y="35">weight</tspan>
+          </text>
+        </g>
+        <g transform="translate(540,400)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">110</tspan>
+            <tspan x="110" y="-5">{{a1.dda110.y}}</tspan>
+            <tspan x="110" y="15">{{a1.dda110.x}}:{{a1.dda110.k}}</tspan>
+            <tspan x="130" y="35">sin(aoa)</tspan>
+            <tspan x="80" y="35"></tspan>
+          </text>
+          <path d="M180,0 l260,0 l0,-400" style="fill:none; stroke:green; stroke-width:2px"/>
+        </g>
+
+      </g> <!-- group pulse1 -->
+
+
+    <!-- Group PULSE2 -->
+
+      <g transform="translate(40,1200)">
+
+        <g transform="translate(0,100)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">201</tspan>
+            <tspan x="110" y="-5">{{a1.dda201.y}}</tspan>
+            <tspan x="110" y="15">{{a1.dda201.x}}:{{a1.dda201.k}}</tspan>
+            <tspan x="130" y="35">v2 #103.y</tspan>
+            <tspan x="80" y="35"></tspan>
+          </text>
+        </g>
+
+        <path d="M180,40 l0,300" style="fill:none; stroke:green; stroke-width:2px"/>
+
+        <!-- Lw -->
+        <g transform="translate(180,40)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">202</tspan>
+            <tspan x="110" y="-5">{{a1.dda202.y}}</tspan>
+            <tspan x="110" y="15">{{a1.dda202.x}}:{{a1.dda202.k}}</tspan>
+            <tspan x="130" y="35">CLw</tspan>
+            <tspan x="80" y="35"></tspan>
+          </text>
+        </g>
+        <g transform="translate(360,40)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">204</tspan>
+            <tspan x="110" y="-5">{{a1.dda204.y}}</tspan>
+            <tspan x="110" y="15">{{a1.dda204.x}}:{{a1.dda204.k}}</tspan>
+            <tspan x="130" y="35">coLw*</tspan>
+            <tspan x="80" y="35"></tspan>
+          </text>
+        </g>
+        <path d="M540,40 l160,0 l0,360" style="fill:none; stroke:green; stroke-width:2px"/>
+
+        <!-- Lt -->
+        <g transform="translate(180,140)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">203</tspan>
+            <tspan x="110" y="-5">{{a1.dda203.y}}</tspan>
+            <tspan x="110" y="15">{{a1.dda203.x}}:{{a1.dda203.k}}</tspan>
+            <tspan x="130" y="35">CLt</tspan>
+            <tspan x="80" y="35"></tspan>
+          </text>
+        </g>
+        <g transform="translate(360,140)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">214</tspan>
+            <tspan x="110" y="-5">{{a1.dda214.y}}</tspan>
+            <tspan x="110" y="15">{{a1.dda214.x}}:{{a1.dda214.k}}</tspan>
+            <tspan x="130" y="35">coLt*</tspan>
+            <tspan x="80" y="35"></tspan>
+          </text>
+        </g>
+        <path d="M540,140 l120,0 l0,260" style="fill:none; stroke:green; stroke-width:2px"/>
+
+
+        <!-- Le -->
+        <g transform="translate(180,240)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">204</tspan>
+            <tspan x="110" y="-5">{{a1.dda204.y}}</tspan>
+            <tspan x="110" y="15">{{a1.dda204.x}}:{{a1.dda204.k}}</tspan>
+            <tspan x="130" y="35">CLe</tspan>
+            <tspan x="80" y="35"></tspan>
+          </text>
+        </g>
+        <g transform="translate(360,240)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">224</tspan>
+            <tspan x="110" y="-5">{{a1.dda224.y}}</tspan>
+            <tspan x="110" y="15">{{a1.dda224.x}}:{{a1.dda224.k}}</tspan>
+            <tspan x="130" y="35">coLe*</tspan>
+            <tspan x="80" y="35"></tspan>
+          </text>
+        </g>
+        <path d="M540,240 l80,0 l0,160" style="fill:none; stroke:green; stroke-width:2px"/>
+
+
+        <!-- Flaps -->
+        <g transform="translate(180,340)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">230</tspan>
+            <tspan x="110" y="-5">{{a1.dda230.y}}</tspan>
+            <tspan x="110" y="15">{{a1.dda230.x}}:{{a1.dda230.k}}</tspan>
+            <tspan x="130" y="35">CLf</tspan>
+            <tspan x="80" y="35"></tspan>
+          </text>
+        </g>
+        <g transform="translate(360,340)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">231</tspan>
+            <tspan x="110" y="-5">{{a1.dda231.y}}</tspan>
+            <tspan x="110" y="15">{{a1.dda231.x}}:{{a1.dda231.k}}</tspan>
+            <tspan x="130" y="35">coLf*</tspan>
+            <tspan x="80" y="35"></tspan>
+          </text>
+        </g>
+        <path d="M540,340 l40,0 l0,60" style="fill:none; stroke:green; stroke-width:2px"/>
+
+
+
+        <text x="0" y="396" class="label">Bus2: AOA</text>
+        <path class="bus2" d="M0,400 l800,0" style="fill:none; stroke:green; stroke-width:2px"/>
+
+        <g transform="translate(0,500)">
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">200</tspan>
+            <tspan x="110" y="-5">{{a1.servo200.y}}</tspan>
+            <tspan x="110" y="15">{{a1.servo200.x}}:{{a1.servo200.k}}</tspan>
+            <tspan x="130" y="35">m/s2</tspan>
+            <tspan x="80" y="35"></tspan>
+          </text>
+          <path d="M90,-20 l0,-80" style="fill:none; stroke:green; stroke-width:2px"/>
+        </g>
+
+
+        <!-- group cosine -->
+        <g transform="translate(180,500)">
+          <rect x="0" y="-60" width="300" height="160" style="fill:none; stroke-width:1px; stroke:lightgreen;"/>
+          <use xlink:href="#DDA" x="0" y="0"/>
+          <text class="small-text">
+            <tspan x="143" y="4" class="dda-id">cos</tspan>
+            <tspan x="110" y="-5">{{a1.aoa.cos.y}}</tspan>
+            <tspan x="110" y="15">{{a1.aoa.cos.x}}:{{a1.aoa.cos.k}}</tspan>
+            <tspan x="130" y="35"></tspan>
+            <tspan x="80" y="35"></tspan>
+          </text>
+          <g transform="translate(100,60)">
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">sin</tspan>
+              <tspan x="110" y="-5">{{a1.aoa.sin.y}}</tspan>
+              <tspan x="110" y="15">{{a1.aoa.sin.x}}:{{a1.aoa.sin.k}}</tspan>
+              <tspan x="130" y="35"></tspan>
+              <tspan x="80" y="35"></tspan>
+            </text>
+            <path d="M180,0 l0,-100 l-200,0 l0,20"
+                  style="fill:none; stroke:green; stroke-width:2px"/>
+          </g>
+          <path d="M10,0 l0,60 l90,0
+                  M180,0 l0,40" style="fill:none; stroke:green; stroke-width:2px"/>
+        </g>
+
+      </g> <!-- group PULSE2 -->
+
+
+      <g transform="translate(40,1900)">
+
+        <!--
+  ========== Moment Intertie (1)================================================================================================
+        -->
+
+        <g transform="translate(0,0)">
+          <text x="0" y="-40" class="label">GYRO: roll</text>
+          <g transform="translate(0,0)">
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">611</tspan>
+              <tspan x="110" y="-5">{{a1.dda611.y}}</tspan>
+              <tspan x="110" y="15">{{a1.dda611.x}}:{{a1.dda611.k}}</tspan>
+              <tspan x="130" y="35">A.&omega;1</tspan>
+              <tspan x="80" y="35"></tspan>
+            </text>
+            <path d="M60,20 l0,100 M60,60 l30,0 M60,90 l30,0 M60,120 l30,0"
+                  style="fill:none; stroke:green; stroke-width:2px"/>
+            <text class="small-text-la">
+              <tspan x="93" y="65">#634.dy</tspan>
+              <tspan x="93" y="95">#626.dy</tspan>
+              <tspan x="93" y="125">L.dt</tspan>
+            </text>
+          </g>
+          <g transform="translate(180,0)">
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">612</tspan>
+              <tspan x="110" y="-5">{{a1.dda612.y}}</tspan>
+              <tspan x="110" y="15">{{a1.dda612.x}}:{{a1.dda612.k}}</tspan>
+              <tspan x="130" y="35">1/A</tspan>
+              <tspan x="80" y="35"></tspan>
+            </text>
+          </g>
+          <g transform="translate(360,0)">
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">613</tspan>
+              <tspan x="110" y="-5">{{a1.dda613.y}}</tspan>
+              <tspan x="110" y="15">{{a1.dda613.x}}:{{a1.dda613.k}}</tspan>
+              <tspan x="130" y="35">&omega;3</tspan>
+              <tspan x="80" y="35"></tspan>
+            </text>
+          </g>
+          <g transform="translate(540,0)">
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">614</tspan>
+              <tspan x="110" y="-5">{{a1.dda614.y}}</tspan>
+              <tspan x="110" y="15">{{a1.dda614.x}}:{{a1.dda614.k}}</tspan>
+              <tspan x="130" y="35">(A-C)/B</tspan>
+              <tspan x="80" y="35"></tspan>
+            </text>
+          </g>
+          <g transform="translate(360,80)">
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">615</tspan>
+              <tspan x="110" y="-5">{{a1.dda615.y}}</tspan>
+              <tspan x="110" y="15">{{a1.dda615.x}}:{{a1.dda615.k}}</tspan>
+              <tspan x="130" y="35">&omega;2</tspan>
+              <tspan x="80" y="35"></tspan>
+            </text>
+            <path d="M0,0 l0,-80" style="fill:none; stroke:green; stroke-width:2px"/>
+          </g>
+          <g transform="translate(540,80)">
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">616</tspan>
+              <tspan x="110" y="-5">{{a1.dda616.y}}</tspan>
+              <tspan x="110" y="15">{{a1.dda616.x}}:{{a1.dda616.k}}</tspan>
+              <tspan x="130" y="35">(B-A)/C</tspan>
+              <tspan x="80" y="35"></tspan>
+            </text>
+          </g>
+
+          <!-- group cosine gyro Gamma1-->
+          <g transform="translate(390,170)">
+            <rect x="0" y="-50" width="300" height="150" style="fill:none; stroke-width:1px; stroke:lightgreen;"/>
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">cos</tspan>
+              <tspan x="110" y="-5">{{a1.G1.cos.y}}</tspan>
+              <tspan x="110" y="15">{{a1.G1.cos.x}}:{{a1.G1.cos.k}}</tspan>
+              <tspan x="130" y="35">G1</tspan>
+              <tspan x="80" y="35">cos(&gamma;1)</tspan>
+            </text>
+            <g transform="translate(100,60)">
+              <use xlink:href="#DDA" x="0" y="0"/>
+              <text class="small-text">
+                <tspan x="143" y="4" class="dda-id">sin</tspan>
+                <tspan x="110" y="-5">{{a1.G1.sin.y}}</tspan>
+                <tspan x="110" y="15">{{a1.G1.sin.x}}:{{a1.G1.sin.k}}</tspan>
+                <tspan x="130" y="35"></tspan>
+                <tspan x="80" y="35"></tspan>
+              </text>
+              <path d="M180,0 l0,-100 l-200,0 l0,20"
+                    style="fill:none; stroke:green; stroke-width:2px"/>
+            </g>
+            <path d="M10,0 l0,60 l90,0
+                    M180,0 l0,40" style="fill:none; stroke:green; stroke-width:2px"/>
+            <path d="M0,0 l-30,0 l0,-90" style="fill:none; stroke:green; stroke-width:2px"/>
+          </g>
+
+
+        </g>
+
+
+        <!--
+  ========== Moment Intertie (2)================================================================================================
+        -->
+
+        <g transform="translate(0,320)">
+          <text x="0" y="-40" class="label">GYRO: pitch</text>
+          <g transform="translate(0,0)">
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">621</tspan>
+              <tspan x="110" y="-5">{{a1.dda621.y}}</tspan>
+              <tspan x="110" y="15">{{a1.dda621.x}}:{{a1.dda621.k}}</tspan>
+              <tspan x="130" y="35">B.&omega;2</tspan>
+              <tspan x="80" y="35"></tspan>
+            </text>
+            <path d="M60,20 l0,100 M60,60 l30,0 M60,90 l30,0 M60,120 l30,0"
+                  style="fill:none; stroke:green; stroke-width:2px"/>
+            <text class="small-text-la">
+              <tspan x="93" y="65">#614.dy</tspan>
+              <tspan x="93" y="95">#636.dy</tspan>
+              <tspan x="93" y="125">M.dt</tspan>
+            </text>
+          </g>
+          <g transform="translate(180,0)">
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">622</tspan>
+              <tspan x="110" y="-5">{{a1.dda622.y}}</tspan>
+              <tspan x="110" y="15">{{a1.dda622.x}}:{{a1.dda622.k}}</tspan>
+              <tspan x="130" y="35">1/B</tspan>
+              <tspan x="80" y="35"></tspan>
+            </text>
+          </g>
+          <g transform="translate(360,0)">
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">623</tspan>
+              <tspan x="110" y="-5">{{a1.dda623.y}}</tspan>
+              <tspan x="110" y="15">{{a1.dda623.x}}:{{a1.dda623.k}}</tspan>
+              <tspan x="130" y="35">&omega;1</tspan>
+              <tspan x="80" y="35"></tspan>
+            </text>
+          </g>
+          <g transform="translate(540,0)">
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">624</tspan>
+              <tspan x="110" y="-5">{{a1.dda624.y}}</tspan>
+              <tspan x="110" y="15">{{a1.dda624.x}}:{{a1.dda624.k}}</tspan>
+              <tspan x="130" y="35">(B-A)/C</tspan>
+              <tspan x="80" y="35"></tspan>
+            </text>
+          </g>
+          <g transform="translate(360,80)">
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">625</tspan>
+              <tspan x="110" y="-5">{{a1.dda625.y}}</tspan>
+              <tspan x="110" y="15">{{a1.dda625.x}}:{{a1.dda625.k}}</tspan>
+              <tspan x="130" y="35">&omega;3</tspan>
+              <tspan x="80" y="35"></tspan>
+            </text>
+            <path d="M0,0 l0,-80" style="fill:none; stroke:green; stroke-width:2px"/>
+          </g>
+          <g transform="translate(540,80)">
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">626</tspan>
+              <tspan x="110" y="-5">{{a1.dda626.y}}</tspan>
+              <tspan x="110" y="15">{{a1.dda626.x}}:{{a1.dda626.k}}</tspan>
+              <tspan x="130" y="35">(C-B)/A</tspan>
+              <tspan x="80" y="35"></tspan>
+            </text>
+          </g>
+
+          <!-- group cosine gyro Gamma2-->
+          <g transform="translate(390,170)">
+            <rect x="0" y="-50" width="300" height="150" style="fill:none; stroke-width:1px; stroke:lightgreen;"/>
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">cos</tspan>
+              <tspan x="110" y="-5">{{a1.G2.cos.y}}</tspan>
+              <tspan x="110" y="15">{{a1.G2.cos.x}}:{{a1.G2.cos.k}}</tspan>
+              <tspan x="130" y="35">G2</tspan>
+              <tspan x="80" y="35">cos(&gamma;2)</tspan>
+            </text>
+            <g transform="translate(100,60)">
+              <use xlink:href="#DDA" x="0" y="0"/>
+              <text class="small-text">
+                <tspan x="143" y="4" class="dda-id">sin</tspan>
+                <tspan x="110" y="-5">{{a1.G2.sin.y}}</tspan>
+                <tspan x="110" y="15">{{a1.G2.sin.x}}:{{a1.G2.sin.k}}</tspan>
+                <tspan x="130" y="35"></tspan>
+                <tspan x="80" y="35"></tspan>
+              </text>
+              <path d="M180,0 l0,-100 l-200,0 l0,20"
+                    style="fill:none; stroke:green; stroke-width:2px"/>
+            </g>
+            <path d="M10,0 l0,60 l90,0
+                    M180,0 l0,40" style="fill:none; stroke:green; stroke-width:2px"/>
+            <path d="M0,0 l-30,0 l0,-90" style="fill:none; stroke:green; stroke-width:2px"/>
+          </g>
+
+
+        </g>
+
+        <!--
+  ========== Moment Intertie (3)================================================================================================
+        -->
+
+        <g transform="translate(0,640)">
+          <text x="0" y="-40" class="label">GYRO: yaw</text>
+          <g transform="translate(0,0)">
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">631</tspan>
+              <tspan x="110" y="-5">{{a1.dda631.y}}</tspan>
+              <tspan x="110" y="15">{{a1.dda631.x}}:{{a1.dda631.k}}</tspan>
+              <tspan x="130" y="35">C.&omega;3</tspan>
+              <tspan x="80" y="35"></tspan>
+            </text>
+            <path d="M60,20 l0,100 M60,60 l30,0 M60,90 l30,0 M60,120 l30,0"
+                  style="fill:none; stroke:green; stroke-width:2px"/>
+            <text class="small-text-la">
+              <tspan x="93" y="65">#624.dy</tspan>
+              <tspan x="93" y="95">#616.dy</tspan>
+              <tspan x="93" y="125">N.dt</tspan>
+            </text>
+          </g>
+          <g transform="translate(180,0)">
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">632</tspan>
+              <tspan x="110" y="-5">{{a1.dda632.y}}</tspan>
+              <tspan x="110" y="15">{{a1.dda632.x}}:{{a1.dda632.k}}</tspan>
+              <tspan x="130" y="35">1/C</tspan>
+              <tspan x="80" y="35"></tspan>
+            </text>
+          </g>
+          <g transform="translate(360,0)">
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">633</tspan>
+              <tspan x="110" y="-5">{{a1.dda633.y}}</tspan>
+              <tspan x="110" y="15">{{a1.dda633.x}}:{{a1.dda633.k}}</tspan>
+              <tspan x="130" y="35">&omega;2</tspan>
+              <tspan x="80" y="35"></tspan>
+            </text>
+          </g>
+          <g transform="translate(540,0)">
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">634</tspan>
+              <tspan x="110" y="-5">{{a1.dda634.y}}</tspan>
+              <tspan x="110" y="15">{{a1.dda634.x}}:{{a1.dda634.k}}</tspan>
+              <tspan x="130" y="35">(C-B)/A</tspan>
+              <tspan x="80" y="35"></tspan>
+            </text>
+          </g>
+          <g transform="translate(360,80)">
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">635</tspan>
+              <tspan x="110" y="-5">{{a1.dda635.y}}</tspan>
+              <tspan x="110" y="15">{{a1.dda635.x}}:{{a1.dda635.k}}</tspan>
+              <tspan x="130" y="35">&omega;1</tspan>
+              <tspan x="80" y="35"></tspan>
+            </text>
+            <path d="M0,0 l0,-80" style="fill:none; stroke:green; stroke-width:2px"/>
+          </g>
+          <g transform="translate(540,80)">
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">636</tspan>
+              <tspan x="110" y="-5">{{a1.dda636.y}}</tspan>
+              <tspan x="110" y="15">{{a1.dda636.x}}:{{a1.dda636.k}}</tspan>
+              <tspan x="130" y="35">(A-C)/B</tspan>
+              <tspan x="80" y="35"></tspan>
+            </text>
+          </g>
+
+          <!-- group cosine gyro Gamma3-->
+          <g transform="translate(390,170)">
+            <rect x="0" y="-50" width="300" height="150" style="fill:none; stroke-width:1px; stroke:lightgreen;"/>
+            <use xlink:href="#DDA" x="0" y="0"/>
+            <text class="small-text">
+              <tspan x="143" y="4" class="dda-id">cos</tspan>
+              <tspan x="110" y="-5">{{a1.G3.cos.y}}</tspan>
+              <tspan x="110" y="15">{{a1.G3.cos.x}}:{{a1.G3.cos.k}}</tspan>
+              <tspan x="130" y="35">G3</tspan>
+              <tspan x="80" y="35">cos(&gamma;3)</tspan>
+            </text>
+            <g transform="translate(100,60)">
+              <use xlink:href="#DDA" x="0" y="0"/>
+              <text class="small-text">
+                <tspan x="143" y="4" class="dda-id">sin</tspan>
+                <tspan x="110" y="-5">{{a1.G3.sin.y}}</tspan>
+                <tspan x="110" y="15">{{a1.G3.sin.x}}:{{a1.G3.sin.k}}</tspan>
+                <tspan x="130" y="35"></tspan>
+                <tspan x="80" y="35"></tspan>
+              </text>
+              <path d="M180,0 l0,-100 l-200,0 l0,20"
+                    style="fill:none; stroke:green; stroke-width:2px"/>
+            </g>
+            <path d="M10,0 l0,60 l90,0
+                    M180,0 l0,40" style="fill:none; stroke:green; stroke-width:2px"/>
+            <path d="M0,0 l-30,0 l0,-90" style="fill:none; stroke:green; stroke-width:2px"/>
+          </g>
+
+        </g>
+
+        <!--
+  ========== Moment Intertie (end)================================================================================================
+        -->
+      </g>
+
+
+
+
+
+    </svg>
+  </div>
+</template>

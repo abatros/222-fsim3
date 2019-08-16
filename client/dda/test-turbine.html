@@ -1,0 +1,21 @@
+<template name="test_turbine">
+  <div class="test-turbine" >
+
+    <div style="z-index:10;position:relative; top:-150px;">
+    </div>
+
+    <svg style="transform-origin:300px 500px; margin-top:10px; width:1000px; height:800px;
+    fill:red, stroke:red;">
+    <text x="10" y="30" style="text-anchor:start;">x2:{{x2}}</text>
+    <text x="110" y="30" style="text-anchor:start;">y2:{{y2}}</text>
+    <text x="210" y="30" style="text-anchor:start;">pulses:{{pulses}}</text>
+    <text x="310" y="30" style="text-anchor:start;">ticks:{{ticks}}</text>
+    <line x1="10" y1="400" x2="800" y2="400" style="fill:red; stroke:#DDAAFF; stroke-width:1px;"/>
+    <line x1="500" y1="100" x2={{x2}} y2={{y2}} style="fill:red; stroke:red; stroke-width:1px;"/>
+<!--
+<text x="110" y="30" style="text-anchor:start;">time:{{time}}</text>
+      <text x="210" y="30" style="text-anchor:start;">cycles:{{cycles}}</text>
+    -->
+    </svg>
+  </div>
+</template>

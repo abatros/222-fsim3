@@ -1,0 +1,69 @@
+<head>
+  <style>
+  div.PFD {
+    position: relative; left:0px; top:0px;
+    width:550px; __overflow-x:visible;
+    height:550px; __overflow-y:visible;
+    background-image: url(pfd6.jpg);
+    background-position: left top;
+    background-repeat: no-repeat;
+    __border: 1px dotted red;
+    margin:0; padding:0;
+  }
+
+  div.PFD svg {
+    margin:0px;
+    position: absolute; left:0px; top:0px;
+    border: 1px dashed lightgreen;
+    width: 547px;
+    height: 547px;
+    __background-color: black;
+    __opacity: 0.9;
+    overflow-x:visible;
+    overflow-y:visible;
+  }
+
+  </style>
+</head>
+
+
+<template name="PFD">
+  <div class='PFD'
+      style="background-color:#202020;
+      __background-color:pink;
+      background-color: transparent;
+      padding:0px;
+      __overflow-y: hidden;
+      __overflow-x: hidden;
+      ">
+
+<!--
+      {{> alti_tape}}
+-->
+    <svg>
+      <!--
+      <rect x="700" y="10" width="20" height="20"
+      style="fill:green" />
+    -->
+      <g transform="translate(10,10)">
+        <rect x="5" y="52" width="100" height="418"
+            style="fill:black; opacity:0.3; border: 1px solid red;
+                  stroke-width: 2px; stroke:red;" />
+      </g>
+
+
+      <rect x="0" y="0" width="500" height="500"
+        style="fill:transparent;
+            "
+      />
+      <rect x="10" y="10" width="480" height="480"
+          style="fill:%202020;
+              opacity: 0.25;
+              "
+      />
+    </svg>
+  </div>
+
+
+
+</template>

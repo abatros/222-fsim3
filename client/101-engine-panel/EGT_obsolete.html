@@ -1,0 +1,35 @@
+<head>
+  <style>
+  div.EGT-panel text {
+    font-family: 'Droid Sans Mono';
+    __font-weight: 600;
+    font-size:23px;
+    __letter-spacing: 2px;
+    fill : #DDFFAA;
+    opacity: 0.8;
+    stroke-size: 3px; stroke: transparent;
+    text-anchor:end;
+    z-index: 10;
+  }
+
+  </style>
+</head>
+
+<template name="EGT_panel">
+  <div class='EGT-panel'
+      style="background-color:#202020;
+      __background-color:pink;
+      __background-color: transparent;
+      padding:0px; height:120px; width:120px;
+      ">
+    <svg>
+      <line x1="{{needle.x1}}"
+            y1="{{needle.y1}}"
+            x2="{{needle.x2}}"
+            y2="{{needle.y2}}"
+            style="stroke:#CCFFAA; stroke-width:5px;"
+            />
+      <text x="82" y="68">{{turbine.egt}}</text>
+    </svg>
+  </div>
+</template>

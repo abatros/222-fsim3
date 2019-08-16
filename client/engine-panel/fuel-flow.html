@@ -1,0 +1,34 @@
+<head>
+<style>
+div.fuel-flow text {
+  fill: red;
+  font-family: 'Droid Sans Mono';
+  __font-weight: 600;
+  font-size:23px;
+  __letter-spacing: 2px;
+  fill : #DDFFAA;
+  opacity: 0.8;
+  stroke-size: 3px; stroke: transparent;
+  text-anchor:end;
+}
+</style>
+</head>
+
+<template name="fuel_flow">
+  <div class='fuel-flow'
+      style="background-color:#202020;
+      __background-color:pink;
+      __background-color: transparent;
+      padding:0px; margin:0;
+      height:28px; width:80px;
+      overflow-y: hidden;
+      overflow-x: hidden;
+      border: 1px dashed red;
+      ">
+    <svg viewBox="0 0 70 28">
+      <text x="74" y="20"
+        transform="scale(0.8,1)"
+        >{{fuel_flow}}</text>
+    </svg>
+  </div>
+</template>

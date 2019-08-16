@@ -1,0 +1,22 @@
+<template name="test_servo_inverse">
+  <div class="test-inverse" style="__fill:red; __stroke:red; __stroke-width:1px;">
+
+    <div style="z-index:10;position:relative; top:-150px;">
+    </div>
+
+    <svg style="transform-origin:300px 500px; margin-top:10px; width:1000px; height:800px;
+    fill:red, stroke:red;">
+    <text x="10" y="30" style="text-anchor:start;">x2:{{x2}}</text>
+    <text x="110" y="30" style="text-anchor:start;">y2:{{y2}}</text>
+    <text x="210" y="30" style="text-anchor:start;">pulses:{{pulses}}</text>
+    <line x1="10" y1="100" x2="600" y2="100" style="fill:red; stroke:#DDAAFF; stroke-width:1;"/>
+    <line x1="10" y1="200" x2="600" y2="200" style="fill:red; stroke:#DDAAFF; stroke-width:1;"/>
+    <line x1="10" y1="500" x2="600" y2="500" style="fill:red; stroke:#DDAAFF; stroke-width:1;"/>
+    <line x1="400" y1="50" x2={{x2}} y2={{y2}} style="fill:red; stroke:red; stroke-width:1;"/>
+<!--
+<text x="110" y="30" style="text-anchor:start;">time:{{time}}</text>
+      <text x="210" y="30" style="text-anchor:start;">cycles:{{cycles}}</text>
+    -->
+    </svg>
+  </div>
+</template>

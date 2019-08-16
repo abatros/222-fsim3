@@ -1,0 +1,102 @@
+<head>
+  <style>
+  .test-psim .dashed {
+    stroke-dasharray: 4,4;
+    stroke:#DDAAFF; stroke-width:1px;
+  }
+  </style>
+</head>
+
+
+<template name="test_psim">
+  <div class="test-psim" >
+
+    <div style="z-index:10;position:relative; left:700px; top:10px; height:0px; overflow:visible;">
+      <button class="js-reset">clear</button>
+      <button class="js-stop-resume">{{stop_resume_label}}</button>
+    </div>
+
+    <svg class="base"
+        style="transform-origin:{{x_origin}}px 700px;
+              width:1000px; height:800px;
+              fill:red, stroke:red;
+              transform:translate(200,0);
+              position:absolute;
+               z-index:-11;
+              ">
+
+    <text x="10" y="30" style="text-anchor:start;">T:{{thrust}}</text>
+    <text x="10" y="50" style="text-anchor:start;">H:{{altitude}} ft</text>
+    <text x="10" y="70" style="text-anchor:start;">R/C:{{rc}} ft/min</text>
+
+    <text x="110" y="30" style="text-anchor:start;">coLw:{{psim.dda312.x}}</text>
+    <text x="110" y="50" style="text-anchor:start;">CL11:{{psim.dda311.x}}</text>
+    <text x="110" y="70" style="text-anchor:start;">S10:{{psim.dda310.x}}</text>
+
+    <text x="210" y="30" style="text-anchor:start;">coLt:{{psim.dda322.x}}</text>
+    <text x="210" y="50" style="text-anchor:start;">CL21:{{psim.dda321.x}}</text>
+    <text x="210" y="70" style="text-anchor:start;">S20:{{psim.dda320.x}}</text>
+
+    <text x="310" y="30" style="text-anchor:start;">ticks:{{ticks}}</text>
+    <text x="310" y="50" style="text-anchor:start;">V2:{{dsim.dda5.x}}</text>
+    <text x="310" y="70" style="text-anchor:start;">V:{{dsim.dda3.x}}</text>
+
+    <text x="410" y="30" style="text-anchor:start;"></text>
+    <text x="410" y="50" style="text-anchor:start;">aoa:{{a1.aoa.angle}} deg:{{a1.aoa.deg}}</text>
+
+    <text x="550" y="30" style="text-anchor:start;">coG:{{coG}} %{{coG_ratio}}</text>
+    <text x="550" y="50" style="text-anchor:start;">aoa:{{a1.aoa.angle}} deg:{{a1.aoa.deg}} CD:{{dsim.dda111.x}}</text>
+    <text x="410" y="70" style="text-anchor:start;">aoa_tail:{{this_aoa_tail}} deg:{{this_aoa_tail_deg}}</text>
+
+    <!-- baseline1 -->
+    <line y1="300" x1="10" x2="1000" y2="300" style="fill:red; stroke:#DDAAFF; stroke-width:1px;"/>
+    <line y1="150" x1="10" x2="1000" y2="150" style="fill:red; stroke:#DDAAFF; stroke-width:1px;" stroke-dasharray="4,4"/>
+    <line y1="200" x1="10" x2="1000" y2="200" style="fill:red; stroke:#DDAAFF; stroke-width:1px;" stroke-dasharray="4,4"/>
+    <line y1="250" x1="10" x2="1000" y2="250" style="fill:red; stroke:#DDAAFF; stroke-width:1px;" stroke-dasharray="4,4"/>
+    <line y1="350" x1="10" x2="1000" y2="350" class="dashed" style="fill:red; stroke:#DDAAFF; stroke-width:1px;"/>
+    <line y1="400" x1="10" x2="1000" y2="400" class="dashed" style="fill:red; stroke:#DDAAFF; stroke-width:1px;"/>
+    <line y1="450" x1="10" x2="1000" y2="450" class="dashed" style="fill:red; stroke:#DDAAFF; stroke-width:1px;"/>
+
+    <!-- baseline2 -->
+    <line y1="459" x1="10" x2="1000" y2="459" class="dashed"/>
+    <line y1="509" x1="10" x2="1000" y2="509" class="dashed"/>
+    <line y1="559" x1="10" x2="1000" y2="559" class="dashed"/>
+    <line y1="609" x1="10" x2="1000" y2="609" style="fill:red; stroke:#DDAAFF; stroke-width:1px;"/>
+    <line y1="659" x1="10" x2="1000" y2="659" class="dashed"/>
+    <line y1="709" x1="10" x2="1000" y2="709" class="dashed"/>
+    <line y1="759" x1="10" x2="1000" y2="759" class="dashed"/>
+
+    <!-- baseline3 -->
+    <line y1="770" x1="10" x2="1000" y2="770" class="dashed"/>
+    <line y1="820" x1="10" x2="1000" y2="820" class="dashed"/>
+    <line y1="870" x1="10" x2="1000" y2="870" class="dashed"/>
+    <line y1="920" x1="10" x2="1000" y2="920" style="fill:red; stroke:blue; stroke-width:1px;"/>
+
+    <!-- needle -->
+    <!--
+    <line x1="500" y1="100" x2={{x2}} y2={{y2}} style="fill:red; stroke:red; stroke-width:1px;"/>
+    -->
+
+    <text x="{{m1.x}}" y="{{m1.y}}">{{m1.label}}</text>
+    <text x="{{m2.x}}" y="{{m2.y}}">{{m2.label}}</text>
+    <text x="{{m3.x}}" y="{{m3.y}}">{{m3.label}}</text>
+    <text x="{{m4.x}}" y="{{m4.y}}">{{m4.label}}</text>
+    <text x="{{m5.x}}" y="{{m5.y}}">{{m5.label}}</text>
+    <text x="{{m6.x}}" y="{{m6.y}}">{{m6.label}}</text>
+    <text x="{{m7.x}}" y="{{m7.y}}">{{m7.label}}</text>
+    <text x="{{m8.x}}" y="{{m8.y}}">{{m8.label}}</text>
+    <text x="{{m9.x}}" y="{{m9.y}}">{{m9.label}}</text>
+    <text x="{{m10.x}}" y="{{m10.y}}">{{m10.label}}</text>
+
+
+
+<!--
+<text x="110" y="30" style="text-anchor:start;">time:{{time}}</text>
+      <text x="210" y="30" style="text-anchor:start;">cycles:{{cycles}}</text>
+    -->
+    </svg>
+    <svg class="test-psim"
+          style="position:absolute; width:1000px; height:900px; z-index:-10;"
+          ></svg>
+  </div>
+</template>

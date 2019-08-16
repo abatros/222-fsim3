@@ -1,0 +1,101 @@
+<head>
+  <style>
+  div.EGT2-panel text {
+    font-family: 'Droid Sans Mono';
+    __font-weight: 600;
+    font-size:23px;
+    __letter-spacing: 2px;
+    fill : #DDFFAA;
+    opacity: 0.8;
+    stroke-size: 3px; stroke: transparent;
+    text-anchor:end;
+    z-index: 10;
+  }
+
+
+line.mark-egt {
+  stroke-width: 2px;
+  stroke: white;
+  opacity: 0.85;
+}
+
+  </style>
+</head>
+
+<template name="EGT2_panel">
+  <div class='EGT2-panel'
+      style="background-color:#202020;
+      __background-color:pink;
+      __background-color: transparent;
+      padding:0px; height:77px; width:120px;
+      border: 1px dashed blue;
+      ">
+    <svg class="quadrant">
+      <clipPath id="cut-off-bottom">
+        <rect x="0" y="0" width="120" height="60" />
+      </clipPath>
+
+      <circle cx="60" cy="60" r="50" clip-path="url(#cut-off-bottom)" stroke="white" stroke-width="2"/>
+      <line class="mark-egt" x1="{{qi 0 'x1'}}" y1="{{qi 0 'y1'}}" x2="{{qi 0 'x2'}}" y2="{{qi 0 'y2'}}"/>
+      <line class="mark-egt" x1="{{qi 1 'x1'}}" y1="{{qi 1 'y1'}}" x2="{{qi 1 'x2'}}" y2="{{qi 1 'y2'}}"/>
+      <line class="mark-egt" x1="{{qi 2 'x1'}}" y1="{{qi 2 'y1'}}" x2="{{qi 2 'x2'}}" y2="{{qi 2 'y2'}}"/>
+      <line class="mark-egt" x1="{{qi 3 'x1'}}" y1="{{qi 3 'y1'}}" x2="{{qi 3 'x2'}}" y2="{{qi 3 'y2'}}"/>
+      <line class="mark-egt" x1="{{qi 4 'x1'}}" y1="{{qi 4 'y1'}}" x2="{{qi 4 'x2'}}" y2="{{qi 4 'y2'}}"/>
+      <line class="mark-egt" x1="{{qi 5 'x1'}}" y1="{{qi 5 'y1'}}" x2="{{qi 5 'x2'}}" y2="{{qi 5 'y2'}}"/>
+
+<!--
+      <path style="fill:#89BDFF;stroke:#FF0000;stroke-width:2;fill:none;" d="M60,60
+        M{{qi 5 'x1'}},{{qi 5 'y1'}}
+        A50,50 0 0,1 110,60
+        M{{qi 5 'x2'}},{{qi 5 'y2'}}
+        A46,46 0 0,1 103,60
+        l 7,0
+       " />
+-->
+      <path style="stroke:#FF0000;stroke-width:2;fill:none;" d="M60,60
+      M{{qi 5 'x1'}},{{qi 5 'y1'}}
+      A50,50 0 0,1 110,60
+      l -7,0
+      A46,46 0 0,0 {{qi 5 'x2'}},{{qi 5 'y2'}}
+      z
+      " />
+
+
+
+      <line x1="{{needle2.x1}}" y1="{{needle2.y1}}" x2="{{needle2.x2}}" y2="{{needle2.y2}}" stroke="#DDFFAA" stroke-width="5" />
+
+
+
+      <rect x="30" y="45" width="60" height="26"
+        style="fill:none; stroke:teal; stroke-width:1px; shape-rendering:crispEdges"
+      />
+
+      <rect x="32" y="47" width="56" height="22"
+          style="fill:#202020; stroke:teal; stroke-width:1px; shape-rendering:crispEdges"
+      />
+
+      <text x="107" y="67" transform="scale(0.8,1)"
+      style="font-size:23px; font-family: 'Droid Sans Mono';
+        __font-weight: 600;
+        letter-spacing: 2px;
+        fill : '#DDFFAA';
+        stroke-width: 2px;
+        opacity: 0.75;
+        stroke: transparent;
+        "
+      >{{turbine.fuel_flow}}</text>
+    </svg>
+
+    <!--
+    <svg class="needle">
+      <line x1="{{needle.x1}}"
+            y1="{{needle.y1}}"
+            x2="{{needle.x2}}"
+            y2="{{needle.y2}}"
+            style="stroke:#CCFFAA; stroke-width:5px;"
+            />
+      <text x="82" y="68">{{turbine.egt}}</text>
+    </svg>
+  -->
+  </div>
+</template>

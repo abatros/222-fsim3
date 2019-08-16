@@ -1,0 +1,48 @@
+<head>
+<style>
+.flaps {
+  width: 60px;
+  height: 245px;
+  background-color: darkgray;
+  position:relative;
+}
+.flaps-slot {
+  position:absolute; top:0px; left:20px; width:20px; height:20px;
+  font-family:monospace; font-size:12pt; font-weight:bold;
+  border: 2px solid #666666;
+  background-color: darkgray;
+  text-align: center;
+  padding-top: 4px;
+}
+.flaps-slot:hover {
+  cursor:pointer;
+  border: 2px solid #CCCCCC;
+}
+.flaps-index {
+  position:absolute; top:12px; left:5px; width:3px; height:200px;
+  background-color:#666666;
+  overflow:visible;
+}
+</style>
+</head>
+
+<template name="flaps">
+  <div class="flaps">
+    <div class="flaps-index">
+      <div style="position:relative; top:{{ypos}}px; width:12px; height:3px; background-color:#666666">
+      </div>
+    </div>
+    <div class="flaps-slot js-flaps3" style="top:20px; background-color:{{bcolor 3}}; border: 2px solid {{bo 3}};">
+      3
+    </div>
+    <div class="flaps-slot js-flaps2" style="top:70px;background-color:{{bcolor 2}}; border: 2px solid {{bo 2}};">
+      2
+    </div>
+    <div class="flaps-slot js-flaps1" style="top:120px;background-color:{{bcolor 1}}; border: 2px solid {{bo 1}};">
+      1
+    </div>
+    <div class="flaps-slot js-zflaps" style="top:170px; background-color:{{bcolor 0}}; border: 2px solid {{bo 0}};">
+      0
+    </div>
+  </div>
+</template>
