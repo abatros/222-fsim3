@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.3.4",
-    "meteor-node-stubs": "^0.4.1",
+    "meteor-node-stubs": "^1.2.26",
     "snapsvg": "^0.5.1",
     "svgjs": "^2.6.2",
     "three": "^0.107.0"
